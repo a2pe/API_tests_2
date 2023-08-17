@@ -1,18 +1,18 @@
-import json
 import random
 
 import pytest
 import requests
 
-from python_tests_3.test_api_service.conftest import user_id, post_id, post_title, post_text, params
+from python_tests_3.test_api_service.conftest import user_id, post_title, post_text, params
 from python_tests_3.test_api_service.constants import POSTS
 from python_tests_3.test_api_service.data import data
 
 
 def test_access_all_posts(base_url):
     """Testing the API endpoint for returning all posts."""
-    response = requests.get(base_url + POSTS).json()
-    assert response == data.data
+    response = requests.get(base_url + POSTS)
+    assert response.status_code == 200
+    assert response.json() == data.data
 
 
 @pytest.mark.parametrize('param', [str(i) for i in range(1, 101)])

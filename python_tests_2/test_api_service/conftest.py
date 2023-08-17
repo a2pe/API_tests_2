@@ -8,7 +8,6 @@ def base_url():
     return 'https://api.openbrewerydb.org/v1/breweries'
 
 
-# Не очень понимаю, почему здесь фикстура не принимается - ошибка "No schema supplied"
 def get_breweries(base_url_2='https://api.openbrewerydb.org/v1/breweries'):
     response = requests.get(base_url_2).json()
     brewery_ids = [response[i]['id'] for i in range(len(response))]

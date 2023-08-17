@@ -10,6 +10,13 @@ def base_url():
     return "https://dog.ceo/api/"
 
 
-@pytest.fixture
-def random_param():
+# Не очень понимаю, как здесь определить фикстуру, тесты не проходят в таком варианте:
+@pytest.fixture(scope="session")
+def dogs_data():
+    dogs_data = dogs_list
+    return dogs_data
+
+
+@pytest.fixture(scope="session")
+def random_param(dogs_data):
     return random.choice(dogs_list)
