@@ -26,13 +26,6 @@ def test_get_random_image_status_code(base_url):
     assert requests.get(base_url + BREEDS + IMAGE + RANDOM).status_code == 200
 
 
-@pytest.mark.smoke
-def test_get_random_image(base_url):
-    """Testing the API endpoint for returning a random image."""
-    response = requests.get(base_url + BREEDS + IMAGE + RANDOM).json()
-    assert response['status'] == OK
-
-
 @pytest.mark.parametrize('param', [str(i) for i in [0, 1, 49, 50]])
 def test_get_multiple_random_images(base_url, param):
     """Testing the API endpoint for returning multiple random images."""

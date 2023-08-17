@@ -10,7 +10,6 @@ def base_url():
     return "https://dog.ceo/api/"
 
 
-# Не очень понимаю, как здесь определить фикстуру, тесты не проходят в таком варианте:
 @pytest.fixture(scope="session")
 def dogs_data():
     dogs_data = dogs_list
